@@ -1,5 +1,4 @@
 import googleLogo from "../assets/google.png";
-import facebookLogo from "../assets/facebook.png";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
 import {
@@ -26,7 +25,7 @@ const Register = () => {
 
     if (res?.user) {
       const data = await axios.post(
-        "http://localhost:3000/api/v1/auth/create-user",
+        "http://localhost:5000/api/v1/auth/create-user",
         { name, email, role: "user", password }
       );
       if (data?.data?.statusCode === 200) {
@@ -46,7 +45,7 @@ const Register = () => {
       if (user?.email) {
         const { displayName, photoURL, email } = user;
         const { data } = await axios.post(
-          "http://localhost:3000/api/v1/auth/create-user",
+          "http://localhost:5000/api/v1/auth/create-user",
           { name: displayName, email, role: "user", avatar: photoURL }
         );
 
@@ -92,10 +91,6 @@ const Register = () => {
           <button onClick={() => signInWithGoogle()} className="btn">
             <img src={googleLogo} className="w-10" />
             Google
-          </button>
-          <button className="btn">
-            <img src={facebookLogo} className="w-10" />
-            Facebook
           </button>
         </div>
         <p className="my-3 text-center text-black">Or</p>
