@@ -7,7 +7,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'tm-primary': "#5840BB"
+      }
+    },
   },
   plugins: [
     daisyui,
